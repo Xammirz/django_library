@@ -1,1 +1,1 @@
-web: gunicorn library:app
+echo "web: gunicorn mysite.wsgi --log-file -" > Procfile
