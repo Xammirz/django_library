@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Имя: {{ author.first_name }}
+  
+  <p><strong>Фамилия:</strong> {{ author.last_name }}</p> <!-- author detail link not yet defined -->
+  <p><strong>Дата Рождения:</strong> {{ author.date_of_birth }}</p>
+  {% if author.date_of_death is none %}
+  <p><strong>Дата Смерти:</strong>Жив(а)</p>
+  {% else %}
+  <p><strong>Дата Смерти:</strong> {{ author.date_of_death }}</p>
+  {% endif %}
+  <div style="margin-left:20px;margin-top:20px">
+<!--   <p><strong>Language:</strong> {{ author.language }}</p>
+  <p><strong>Genre:</strong> {% for genre in author.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  -->
+<!-- 
+   <div style="margin-left:20px;margin-top:20px">
+    <h4>Copies</h4>
+
+    {% for copy in author.authorinstance_set.all %}
+    <hr>
+    <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'd' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
+    {% if copy.status != 'a' %}<p><strong>Due to be returned:</strong> {{copy.due_back}}</p>{% endif %}
+    <p><strong>Imprint:</strong> {{copy.imprint}}</p>
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div> -->
+{% endblock %} 

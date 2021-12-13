@@ -1,0 +1,116 @@
+
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Главная </title>
+    <link rel="stylesheet" href="{% static 'book_browse/style.css' %}" />
+    {% if user.is_authenticated %}
+    <p>Здравстуйте, мы очень рады вам, {{ user.username }}!</p>
+    <p><a href="{% url 'logout' %}">Выйти</a></p>
+    <p><a href="{% url 'home' %}">Библиотека</a></p>
+    
+  {% else %}
+    <p>Вы не Вошли/Зарегистрировались!</p>
+    <a href="{% url 'login' %}">Войти</a> </br>
+    <a href="{% url 'signup' %}">Зарегистрироваться</a>
+  {% endif %}
+  </head>
+  {% if user.is_authenticated %}
+  <body>
+    
+    
+    <main class="container">
+      <header class="site-header">
+        <svg
+          class="site-header__logo"
+          viewBox="0 0 32 32"
+          width="32"
+          height="32"
+          fill="none"
+          stroke="currentcolor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="4"
+        >
+          <path
+            d="M16 7 C16 7 9 1 2 6 L2 28 C9 23 16 28 16 28 16 28 23 23 30 28 L30 6 C23 1 16 7 16 7 Z M16 7 L16 28"
+          ></path>
+        </svg>
+        <h1>Поиск</h1>
+      </header>
+      <form class="form" action="{% url 'books' %}" method="GET">
+        {% csrf_token %}
+
+        <label for="{{ form.search.id_for_label }}"> Поиск по названию книги</label>
+        <div class="field">
+          {{ form.search }}
+          <button class="field__button" aria-label="Search">
+            <svg
+              viewBox="0 0 32 32"
+              width="32"
+              height="32"
+              fill="none"
+              stroke="currentcolor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <circle cx="14" cy="14" r="12"></circle>
+              <path d="M23 23 L30 30"></path>
+            </svg>
+          </button>
+        </div>
+        <label  for="{{ form.author.id_for_label }}">
+          Поиск книги по автору</label
+        >
+        <div class="field">
+          {{ form.author }}
+          <button class="field__button" aria-label="Search">
+            <svg
+              viewBox="0 0 32 32"
+              width="32"
+              height="32"
+              fill="none"
+              stroke="currentcolor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <circle cx="14" cy="14" r="12"></circle>
+              <path d="M23 23 L30 30"></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </main>
+   
+  </body>
+</html>
+{% else %}
+<h3>Для начала войдите/Зарегистрируйтесь</h3>
+{% endif %}
+<style>
+  body {
+      color: white;
+  }
+  h1 {
+      color: white;
+  }
+  p {
+      color: white;
+  }
+  body {
+  background-color: black
+
+  }
+  a {
+      color: yellow;
+  }
+  </style>
+{% endblock %}
