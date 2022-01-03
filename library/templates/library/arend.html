@@ -5,6 +5,7 @@
 
 {% if bookinstance_list %}
     {% for b in bookinstance_list%}
+<<<<<<< HEAD
     <ul>
         <li>
             <p>{{ b.book.title }}</p>
@@ -16,6 +17,11 @@
     </ul>
 
     {% endfor %}
+=======
+    <a href="{% url 'renew-book-librarian'  b.id  %}">{{ b.book.title }}</a><p></br>
+    {% endfor %}
+    <h1>Если хотите взять в аренду кликните</h1>
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 {% endif %}
   
 {% endblock %}

@@ -2,11 +2,15 @@
 
 {% block content %}
 <h1>Имя: {{ author.first_name }}
+<<<<<<< HEAD
   {% if author.book_set.all%}
       {% for book in author.book_set.all %}
   <p><strong>Книга:</strong> <a href="{% url 'book-detail' author.book.pk %}">{{ book.title }}</a></p>
       {% endfor %}
   {% endif %}
+=======
+  
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
   <p><strong>Фамилия:</strong> {{ author.last_name }}</p> <!-- author detail link not yet defined -->
   <p><strong>Дата Рождения:</strong> {{ author.date_of_birth }}</p>
   {% if author.date_of_death is none %}

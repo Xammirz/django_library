@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 import datetime
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render, get_object_or_404
+<<<<<<< HEAD
 from django.http import HttpResponseRedirect, request, JsonResponse
+=======
+from django.http import HttpResponseRedirect, request
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 from django.urls import reverse, reverse_lazy
 from .models import Book, Author, BookInstance, Genre
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
+<<<<<<< HEAD
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -18,6 +26,11 @@ from library import models
 from .serializers import BookSerializer, AuthorSerializer
 
 
+=======
+from library.forms import RenewBookForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from library import models
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 
 def index(request):
     """
@@ -44,7 +57,10 @@ def index(request):
 class BookListView(generic.ListView):
     model = Book
     paginate_by = 10
+<<<<<<< HEAD
     
+=======
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
    
 class BookDetailView(generic.DetailView):
     model = Book
@@ -71,6 +87,10 @@ class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
 
 
 @login_required
+<<<<<<< HEAD
+=======
+
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 def renew_book_librarian(request, pk):
     book_instance = get_object_or_404(BookInstance, pk=pk)
 
@@ -101,7 +121,10 @@ def renew_book_librarian(request, pk):
     }
 
     return render(request, 'library/book_renew_librarian.html', context)
+<<<<<<< HEAD
 
+=======
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 class ArendView(generic.ListView):
     model = BookInstance
     template_name = 'library/arend.html'
@@ -121,14 +144,29 @@ class AuthorDelete(DeleteView):
     model = Author
     success_url = reverse_lazy('authors')
 
+<<<<<<< HEAD
 class AdminActionBookView(generic.ListView):
     model = Book
     template_name = 'library/admin_action_book.html'
 
+=======
+
+
+
+
+
+class AdminActionBookView(generic.ListView):
+    model = Book
+    template_name = 'library/admin_action_book.html'
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 class BookCreate(CreateView):
     model = Book
     fields = ['title', 'summary', 'isbn', 'genre']
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 class BookUpdate(UpdateView):
     model = Book
     fields = '__all__' # Not recommended (potential security issue if more fields added)
@@ -136,6 +174,7 @@ class BookUpdate(UpdateView):
 class BookDelete(DeleteView):
     model = Book
     success_url = reverse_lazy('books')
+<<<<<<< HEAD
 
 class BookListViewAPI(generics.ListAPIView):
     queryset = Book.objects.all()
@@ -155,5 +194,7 @@ class AuthorDetailViewAPI(generics.RetrieveAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
+=======
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
     
         

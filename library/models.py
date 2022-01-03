@@ -26,9 +26,15 @@ class Book(models.Model):
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True, verbose_name='Автор',related_name='+')
     # Foreign Key used because book can only have one author, but authors can have multiple books
     # Author as a string rather than object because it hasn't been declared yet in the file.
+<<<<<<< HEAD
     summary = models.TextField(max_length=1000, help_text="Напишите описание этой книге", verbose_name='Описание')
     isbn = models.CharField('ISBN',max_length=13, help_text='13 Символов  <a href="https://www.isbn-international.org/content/what-isbn">ISBN номера</a>')
     genre = models.ManyToManyField(Genre, help_text="Выберите жанр для этой книги", verbose_name='Жанр')
+=======
+    summary = models.TextField(max_length=1000, help_text="Enter a brief description of the book", verbose_name='Описание')
+    isbn = models.CharField('ISBN',max_length=13, help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
+    genre = models.ManyToManyField(Genre, help_text="Select a genre for this book", verbose_name='Жанр')
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
 
@@ -65,7 +71,11 @@ class Book(models.Model):
 Model representing a specific copy of a book (i.e. that can be borrowed from the library).
 """
 class BookInstance(models.Model):
+<<<<<<< HEAD
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Уникальный идентификатор для этой конкретной книги во всей библиотеке")
+=======
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True, verbose_name='Книга')
     imprint = models.CharField(max_length=200, verbose_name='Издательство')
     due_back = models.DateField(null=True, blank=True, verbose_name='Срок годности до:')
@@ -82,7 +92,11 @@ class BookInstance(models.Model):
         ('r', 'Забронирован'),
     )
 
+<<<<<<< HEAD
     status = models.CharField(max_length=1, choices=LOAN_STATUS, blank=True, default='m', help_text='Наличие книги', verbose_name='Статус')
+=======
+    status = models.CharField(max_length=1, choices=LOAN_STATUS, blank=True, default='m', help_text='Book availability', verbose_name='Статус')
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 
     class Meta:
         ordering = ["due_back"]

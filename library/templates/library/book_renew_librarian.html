@@ -1,5 +1,9 @@
 {% extends "base_generic.html" %}
+<<<<<<< HEAD
 {% load crispy_forms_tags %}
+=======
+
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 {% block content %}
   <h1>Имя: {{ book_instance.book.title }}</h1>
   <p>Пользователь: {{ user.get_username }}</p>
@@ -7,7 +11,13 @@
 
   <form action="" method="post">
     {% csrf_token %}
+<<<<<<< HEAD
     {{ form|crispy }}
+=======
+    <table>
+    {{ form.as_table }}
+    </table>
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
     <input type="submit" value="Готово!">
   </form>
 {% endblock %}
