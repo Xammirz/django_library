@@ -48,12 +48,15 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'book_browse',
     'library',
+    'rest_framework',
+    'crispy_forms',
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -138,6 +141,6 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 SIGNUP_REDIRECT_URL = 'index'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 django_heroku.settings(locals())

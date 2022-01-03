@@ -9,8 +9,8 @@
       {% for book in book_list %}
       <li>
         <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
-        <a href="{% url 'book-update' book.id %}">|| Обновить Автора</a> ||
-        <a href="{% url 'book-delete' book.id %}">|| Удалить Автора</a>
+        <a href="{% url 'book-update' book.id %}">|| Обновить Книгу</a> ||
+        <a href="{% url 'book-delete' book.id %}">|| Удалить Книгу</a>
       </li>
       {% endfor %}
       <a href="{% url 'book-create' %}">Создать Книгу</a>
