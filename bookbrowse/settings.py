@@ -6,11 +6,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-<<<<<<< HEAD
 import django_heroku
-=======
-
->>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
 import os
 import environ
 
@@ -52,21 +48,15 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'book_browse',
     'library',
-<<<<<<< HEAD
     'rest_framework',
     'crispy_forms',
-=======
->>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-<<<<<<< HEAD
     'corsheaders.middleware.CorsMiddleware',
-=======
->>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -144,7 +134,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-<<<<<<< HEAD
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
@@ -155,16 +144,3 @@ SIGNUP_REDIRECT_URL = 'index'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 django_heroku.settings(locals())
-=======
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (os.path.join('static'), )
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
-SIGNUP_REDIRECT_URL = 'index'
-
-
->>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22

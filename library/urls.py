@@ -1,12 +1,12 @@
-<<<<<<< HEAD
+
 from django.urls import path, include
 from django.urls.conf import include
 from . import views
 from .views import  BookListViewAPI, BookDetailViewAPI, AuthorListViewAPI, AuthorDetailViewAPI
-=======
+
 from django.urls import path
 from . import views
->>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
+
 from django.conf.urls import url
 
 urlpatterns = [
@@ -27,12 +27,11 @@ urlpatterns = [
     path('book/create/', views.BookCreate.as_view(), name='book-create'),
     path('book/update/<int:pk>', views.BookUpdate.as_view(), name='book-update'),
     path('book/delete/<int:pk>', views.BookDelete.as_view(), name='book-delete'),
-<<<<<<< HEAD
+
     path('api/v1/books/', BookListViewAPI.as_view(), name='book_list_api'),
     path('api/v1/books/<int:pk>', BookDetailViewAPI.as_view(), name='book_detail_api'),
     path('api/v1/authors/', AuthorListViewAPI.as_view(), name='author_list_api'),
     path('api/v1/authors/<int:pk>', AuthorDetailViewAPI.as_view(), name='author_detail_api'),
     
-=======
->>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
+
 ]

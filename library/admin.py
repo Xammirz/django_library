@@ -8,11 +8,11 @@ admin.site.register(Genre)
 # Define the admin class
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
-<<<<<<< HEAD
+
     fields = ['first_name', 'last_name', 'book',('date_of_birth', 'date_of_death')]
-=======
+
     fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death')]
->>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
+
 
 # Register the admin class with the associated model
 admin.site.register(Author, AuthorAdmin)
