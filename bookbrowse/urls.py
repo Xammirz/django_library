@@ -8,6 +8,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('', include('book_browse.urls')),
     path('library/', include('library.urls')),
+    path('__debug__/', include('debug_toolbar.urls')),
     
     
     

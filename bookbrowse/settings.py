@@ -9,7 +9,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import django_heroku
 import os
 import environ
-
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
 
 root = environ.Path(__file__) - 3  # get root of the project
@@ -50,6 +54,7 @@ INSTALLED_APPS = [
     'library',
     'rest_framework',
     'crispy_forms',
+    "debug_toolbar",
     
 ]
 
@@ -62,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     
     
 ]
