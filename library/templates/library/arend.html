@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список книг в аренду</h1>
+
+{% if bookinstance_list %}
+    {% for b in bookinstance_list%}
+
+    <ul>
+        <li>
+            <p>{{ b.book.title }}</p>
+            <form action="{% url 'renew-book-librarian'  b.id  %}">
+                <button>Взять в аренду</button>
+            </form>
+            
+        </li>
+    </ul>
+
+   
+
+    <a href="{% url 'renew-book-librarian'  b.id  %}">{{ b.book.title }}</a><p></br>
+    {% endfor %}
+    <h1>Если хотите взять в аренду кликните</h1>
+
+{% endif %}
+  
+{% endblock %}

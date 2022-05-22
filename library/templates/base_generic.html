@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  {% block title %}<title>Local Library</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Добавление дополнительного статического CSS файла -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+  <style>
+    body {
+        color: white;
+    }
+    h1 {
+        color: white;
+    }
+    p {
+        color: white;
+    }
+    body {
+    background-color: black
+  
+    }
+    a {
+        color: yellow;
+    }
+    button {
+        color: black;
+
+<<<<<<< HEAD
+        background-color: wheat;
+=======
+        background-color: red;
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
+    }
+    </style>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-2">
+      {% block sidebar %}
+      <ul class="sidebar-nav">
+          
+          <li><a href="{% url 'home' %}">Библиотека</a></li>
+          <li><a href="{% url 'bookss' %}">Все книги </a></li>
+          <li><a href="{% url 'authors' %}">Все авторы </a></li>
+          <li>Пользователь: {{ user.get_username }}</li>
+          <li><a href="{% url 'my-borrowed' %}">Мои позаимствованныe книги</a></li>
+          <li><a href="{% url 'arend' %}">Аренда Книг</a></li>
+          --------
+          {% if perms.catalog.can_mark_returned %}
+          <li><a href="{% url 'admin_action_author' %}">Админ Авторы</a></li>  
+          <li><a href="{% url 'admin_action_book' %}">Админ Книги</a></li> 
+          {% endif %}
+          --------
+          <li><a href="{% url 'index' %}">Главная</a></li> 
+          
+
+
+          
+      </ul>
+     {% endblock %}
+      </div>
+      <div class="col-sm-10 ">
+      {% block content %}{% endblock %}
+      {% block pagination %}
+  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+{% endblock %} 
+      </div>
+    </div>
+    <style>
+      body {
+      background-color: black
+
+      }
+      input{
+          color: fuchsia;
+      }
+      option{
+          color: black;
+      }
+      select{
+          color: fuchsia;
+      }
+      textarea{
+          color: black;
+      }
+      </style>
+
+  </div>
+</body>
+</html>

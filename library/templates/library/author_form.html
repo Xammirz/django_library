@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+
+{% extends "base_generic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Готово">
+=======
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
+  </form>
+{% endblock %}

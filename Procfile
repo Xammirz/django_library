@@ -1,0 +1,1 @@
+web: gunicorn djanlib.wsgi --log-file -

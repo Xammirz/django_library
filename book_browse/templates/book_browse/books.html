@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Книги</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'book_browse/style.css' %}" >
+  </head>
+  <body>
+    <div class="book-container">
+      <header >
+        <a href="/" class="site-header">
+        <svg
+          class="site-header__logo"
+          viewBox="0 0 32 32"
+          width="32"
+          height="32"
+          fill="none"
+          stroke="currentcolor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="4"
+        >
+          <path
+            d="M16 7 C16 7 9 1 2 6 L2 28 C9 23 16 28 16 28 16 28 23 23 30 28 L30 6 C23 1 16 7 16 7 Z M16 7 L16 28"
+          ></path>
+        </svg>
+        <h1>Главная</h1>
+      </a>
+      </header>
+    {% if books %}
+    <ul class="grid">
+      {% for book in books %}
+
+      <li class="card">
+        <h2 class="card__title">
+          <a class="card__link" href="{{ book.info }}">{{ book.title }}</a>
+        </h2>
+        <img
+          class="card__image"
+          width="128"
+          height="190"
+          src="{{ book.image }}"
+          alt="Изображение не загрузилось"
+        />
+        <div class="card__author">Авторы: {{ book.authors }}</div>
+        <div class="card__publisher">Издатель: {{ book.publisher }}</div>
+        <div class="card__publisher">Дата издания: {{ book.date }}</div>
+      </li>
+
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="error">
+      <h2>
+        {{message }}
+      </h2>
+      <a href="/">Искать снова</a>
+    </div>
+
+    {% endif %}
+  </body>
+</html>
+<style>
+  body {
+      color: white;
+  }
+  h1 {
+      color: white;
+  }
+  p {
+      color: white;
+  }
+  body {
+  background-color: black
+
+  }
+  a {
+      color: yellow;
+  }
+  </style>

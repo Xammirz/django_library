@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список книг </h1>
+
+    {% if book_list %}
+    <ul>
+
+      {% for book in book_list %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+<<<<<<< HEAD
+        <a href="{% url 'book-update' book.id %}">|| Обновить Книгу</a> ||
+        <a href="{% url 'book-delete' book.id %}">|| Удалить Книгу</a>
+=======
+        <a href="{% url 'book-update' book.id %}">|| Обновить Автора</a> ||
+        <a href="{% url 'book-delete' book.id %}">|| Удалить Автора</a>
+>>>>>>> b07154f3fcca8999a4ce3efc70d5d1edd3bd6b22
+      </li>
+      {% endfor %}
+      <a href="{% url 'book-create' %}">Создать Книгу</a>
+
+    </ul>
+    {% else %}
+      <p>There are no books in the library.</p>
+    {% endif %} 
+{% endblock %}

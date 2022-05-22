@@ -1,0 +1,28 @@
+<!-- templates/registration/login.html -->
+
+<h2>Вход</h2>
+<a href="{% url 'index' %}">Назад</a> </br>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Войти</button>
+
+</form>
+<style>
+  body {
+      color: white;
+  }
+  h1 {
+      color: white;
+  }
+  p {
+      color: white;
+  }
+  body {
+  background-color: black
+
+  }
+  a {
+      color: yellow;
+  }
+  </style>
