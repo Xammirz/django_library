@@ -23,11 +23,6 @@ from library import models
 from .serializers import BookSerializer, AuthorSerializer
 
 
-from library.forms import RenewBookForm
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from library import models
-
-
 def index(request):
     """
     Функция отображения для домашней страницы сайта.

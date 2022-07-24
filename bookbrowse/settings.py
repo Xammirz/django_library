@@ -8,14 +8,19 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import django_heroku
 import os
+import environ
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASE = { 'default': dj_database_url.config() }
 
-DATABASE['default'].update(db_from_env)
-ALLOWED_HOSTS = ['*']
+root = environ.Path(__file__) - 3  # get root of the project
+env = environ.Env()
+env.read_env()  # reading .env file
 
+SITE_ROOT = root()
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,10 +31,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -90,12 +98,15 @@ WSGI_APPLICATION = 'bookbrowse.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+'default': {
+'ENGINE': 'django.db.backends.postgresql_psycopg2',
+'NAME': 'data',
+'USER': 'ramzan',
+'PASSWORD': 'ramzan123321',3
+'HOST': '127.0.0.1',
+'PORT': '5433'
 }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -134,7 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
